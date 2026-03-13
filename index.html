@@ -4,78 +4,661 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suleman Khan</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+      color: #172033;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .topbar-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.2px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #475569;
+      font-size: 15px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 48px 28px 26px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 26px;
+      box-shadow: 0 18px 45px rgba(37, 99, 235, 0.08);
+    }
+
+    .profile-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.10);
+      margin-bottom: 22px;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .name {
+      margin: 0 0 8px;
+      font-size: 30px;
+      line-height: 1.15;
+      color: #0f172a;
+    }
+
+    .role {
+      font-size: 17px;
+      color: #475569;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .mini-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .mini-tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #e0e7ff;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .icon-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .icon-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .icon-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 8px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+      transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    }
+
+    .icon-link:hover .icon-card {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, 0.35);
+      color: #2563eb;
+    }
+
+    .icon-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f8fafc;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .icon-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      text-align: center;
+    }
+
+    .sidebar-links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .sidebar-links a {
+      text-decoration: none;
+      color: #2563eb;
+      font-size: 15px;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+    }
+
+    .hero-main {
+      padding: 34px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      margin-bottom: 18px;
+    }
+
+    .hero-main h2 {
+      margin: 0 0 14px;
+      font-size: 42px;
+      line-height: 1.12;
+      color: #0f172a;
+      max-width: 900px;
+    }
+
+    .hero-main p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #334155;
+      max-width: 980px;
+    }
+
+    .highlights {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .highlight {
+      background: #ffffff;
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 20px;
+      padding: 18px 16px;
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: 14px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .highlight span {
+      display: block;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .section-wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0 28px 42px;
+    }
+
+    .section-header {
+      margin: 20px 0 18px;
+    }
+
+    .section-header h3 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      color: #0f172a;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 920px;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .research-card {
+      padding: 24px;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(148,163,184,0.14);
+    }
+
+    .research-card.aviation { border-top: 6px solid #2563eb; }
+    .research-card.network { border-top: 6px solid #0f766e; }
+    .research-card.forensics { border-top: 6px solid #d97706; }
+    .research-card.defence { border-top: 6px solid #7c3aed; }
+
+    .research-card h4 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: #0f172a;
+    }
+
+    .research-card p {
+      margin: 0 0 16px;
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .aviation .tag { background: #dbeafe; color: #1d4ed8; }
+    .network .tag { background: #ccfbf1; color: #0f766e; }
+    .forensics .tag { background: #fef3c7; color: #b45309; }
+    .defence .tag { background: #ede9fe; color: #6d28d9; }
+
+    .bottom-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 20px;
+    }
+
+    .wide-card,
+    .side-card {
+      padding: 28px;
+    }
+
+    .wide-card h4,
+    .side-card h4 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      color: #0f172a;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .expertise-item {
+      background: #ffffff;
+      border: 1px solid rgba(148,163,184,0.14);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    .expertise-item strong {
+      display: block;
+      font-size: 15px;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .expertise-item span {
+      display: block;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .edu-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(148,163,184,0.18);
+    }
+
+    .edu-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .edu-degree {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .edu-place {
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1200px) {
+      .hero {
+        grid-template-columns: 300px 1fr;
+      }
+
+      .research-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inner,
+      .hero,
+      .section-wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero {
+        padding-top: 24px;
+      }
+
+      .hero-main,
+      .profile-card,
+      .wide-card,
+      .side-card {
+        padding: 22px;
+      }
+
+      .hero-main h2 {
+        font-size: 32px;
+      }
+
+      .research-grid,
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Suleman Khan</h1>
-      <p class="subtitle">PhD Candidate, Linköping University</p>
-      <p>
-        Cybersecurity for Aviation Communication Systems, CPDLC, LDACS, FCI,
-        Secure Authentication, Key Agreement, Handover Security
-      </p>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Suleman Khan</div>
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#education">Education</a>
+        <a href="#cv">CV</a>
+      </nav>
     </div>
   </header>
 
-  <nav class="nav">
-    <div class="container">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#projects">Projects</a>
-      <a href="#cv">CV</a>
-      <a href="#contact">Contact</a>
+  <section class="hero" id="home">
+    <aside class="card profile-card">
+      <div>
+        <div class="profile-photo">
+          <img src="profile.jpg" alt="Suleman Khan" />
+        </div>
+
+        <h1 class="name">Suleman Khan</h1>
+        <div class="role">PhD Candidate in Computer Science</div>
+
+        <div class="mini-tags">
+          <span class="mini-tag">Cybersecurity Engineer</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="icon-row">
+          <a class="icon-link" href="mailto:sulemankhan@ieee.org" aria-label="Email Suleman Khan">
+            <div class="icon-card">
+              <span class="icon-btn">✉</span>
+              <span class="icon-label">Email</span>
+            </div>
+          </a>
+          <a class="icon-link" href="https://github.com/sulemankhan354" target="_blank" aria-label="Open GitHub profile">
+            <div class="icon-card">
+              <span class="icon-btn">GH</span>
+              <span class="icon-label">GitHub</span>
+            </div>
+          </a>
+          <a class="icon-link" href="https://scholar.google.com/" target="_blank" aria-label="Open Google Scholar">
+            <div class="icon-card">
+              <span class="icon-btn">GS</span>
+              <span class="icon-label">Scholar</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="sidebar-links">
+          <a href="https://liu.se/en/organisation/liu/ida" target="_blank">
+            <span>🏛</span>
+            <span>Department of Computer and Information Science (IDA)</span>
+          </a>
+          <a href="https://liu.se/en" target="_blank">
+            <span>🎓</span>
+            <span>Linköping University</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="card hero-main">
+      <div class="eyebrow">About Me</div>
+      <h2>Cybersecurity researcher working on secure and resilient aviation communication systems.</h2>
+      <p>
+        I am a PhD candidate at Linköping University, Sweden, working in the area of cybersecurity for next-generation aviation communication systems. My research focuses on secure authentication, key agreement, secure handover, mobility management, and anomaly detection for critical air-ground communication infrastructures. My main work targets Controller–Pilot Data Link Communications (CPDLC), the L-band Digital Aeronautical Communications System (LDACS), and Future Communication Infrastructure (FCI), with an emphasis on practical security, formal verification, testing, and resilient aviation networking. In addition to my academic research, I have professional experience in digital forensics, network security engineering, security testing, IDS/IPS, risk and threat analysis, and incident response.
+      </p>
+
+      <div class="highlights">
+        <div class="highlight">
+          <strong>Main Domain</strong>
+          <span>Aviation cybersecurity and critical communication security</span>
+        </div>
+        <div class="highlight">
+          <strong>Core Methods</strong>
+          <span>Formal verification, security testing, protocol analysis</span>
+        </div>
+        <div class="highlight">
+          <strong>Practical Background</strong>
+          <span>Digital forensics, IDS/IPS, network security engineering</span>
+        </div>
+        <div class="highlight">
+          <strong>System Focus</strong>
+          <span>CPDLC, LDACS, FCI, secure mobility and handover</span>
+        </div>
+      </div>
     </div>
-  </nav>
+  </section>
 
-  <main class="container">
-    <section id="about">
-      <h2>About</h2>
+  <section class="section-wrap" id="research">
+    <div class="section-header">
+      <h3>Research Areas</h3>
       <p>
-        I am a PhD candidate at Linköping University working on cybersecurity
-        for next-generation aviation communication systems.
+        My work spans aviation security, protocol and network security, digital forensics, and threat detection. The layout below uses the page more efficiently and keeps the content easier to read.
       </p>
-    </section>
+    </div>
 
-    <section id="research">
-      <h2>Research</h2>
-      <p>
-        My research focuses on secure authentication, key agreement, mobility,
-        secure handover, and anomaly detection in aviation communication
-        systems such as CPDLC, LDACS, and FCI.
-      </p>
-    </section>
+    <div class="research-grid">
+      <div class="research-card aviation">
+        <h4>✈️ Aviation Security</h4>
+        <p>Security of modern air-ground communication systems and mobility support for aviation networks.</p>
+        <div class="tag-list">
+          <span class="tag">Aviation cybersecurity</span>
+          <span class="tag">CPDLC security</span>
+          <span class="tag">LDACS security</span>
+          <span class="tag">FCI security</span>
+          <span class="tag">Secure handover</span>
+          <span class="tag">Mobility management</span>
+        </div>
+      </div>
 
-    <section id="publications">
-      <h2>Publications</h2>
-      <ul>
-        <li>Paper I – AKAASH for CPDLC</li>
-        <li>Paper II – PUF-based secure CPDLC mechanism</li>
-        <li>Paper III – Secure MAKE protocol for LDACS</li>
-        <li>Paper IV – Post-quantum secure handover for LDACS</li>
-        <li>Paper V – HIP-based secure multihoming and mobility in FCI</li>
-      </ul>
-    </section>
+      <div class="research-card network">
+        <h4>🌐 Network & Protocol Security</h4>
+        <p>Design, analysis, and validation of secure communication mechanisms and network protection methods.</p>
+        <div class="tag-list">
+          <span class="tag">Authentication</span>
+          <span class="tag">Key agreement</span>
+          <span class="tag">Formal verification</span>
+          <span class="tag">Security testing</span>
+          <span class="tag">Protocol analysis</span>
+          <span class="tag">Network security engineering</span>
+        </div>
+      </div>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>
-        Ongoing work in aviation cybersecurity, secure protocols, formal
-        verification, anomaly detection, and mobility management.
-      </p>
-    </section>
+      <div class="research-card forensics">
+        <h4>🕵️ Digital Forensics</h4>
+        <p>Experience in forensic analysis, investigation support, and evidence-oriented cybersecurity work.</p>
+        <div class="tag-list">
+          <span class="tag">Digital forensics</span>
+          <span class="tag">Threat analysis</span>
+          <span class="tag">Risk analysis</span>
+          <span class="tag">Incident response</span>
+          <span class="tag">Security operations</span>
+        </div>
+      </div>
 
-    <section id="cv">
-      <h2>CV</h2>
-      <p><a href="cv.pdf" target="_blank">Download my CV</a></p>
-    </section>
+      <div class="research-card defence">
+        <h4>🛡️ Detection & Defence</h4>
+        <p>Detection, prevention, and resilience mechanisms for protecting critical systems and infrastructure.</p>
+        <div class="tag-list">
+          <span class="tag">IDS</span>
+          <span class="tag">IPS</span>
+          <span class="tag">Anomaly detection</span>
+          <span class="tag">Critical infrastructure</span>
+          <span class="tag">Resilient systems</span>
+        </div>
+      </div>
+    </div>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>GitHub: <a href="https://github.com/sulemankhan354">sulemankhan354</a></p>
-      <p>Email: your-email@liu.se</p>
-    </section>
-  </main>
+    <div class="bottom-grid">
+      <div class="card wide-card" id="expertise">
+        <h4>Professional Expertise</h4>
+        <div class="expertise-grid">
+          <div class="expertise-item">
+            <strong>Protocol Security</strong>
+            <span>Secure authentication, key exchange, handover protection, and formal analysis.</span>
+          </div>
+          <div class="expertise-item">
+            <strong>Cybersecurity Engineering</strong>
+            <span>Security design, testing, network protection, and engineering support for critical systems.</span>
+          </div>
+          <div class="expertise-item">
+            <strong>Digital Forensics</strong>
+            <span>Investigation-oriented work, forensic methods, and practical analysis experience.</span>
+          </div>
+          <div class="expertise-item">
+            <strong>Threat Detection</strong>
+            <span>IDS/IPS, anomaly detection, risk analysis, and incident response capabilities.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card side-card" id="education">
+        <h4>Education</h4>
+        <div class="edu-item">
+          <div class="edu-degree">PhD in Computer Science (2021–2026)</div>
+          <div class="edu-place">Linköping University, Sweden</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Master’s in Computer Science (2017–2019)</div>
+          <div class="edu-place">Air University, Pakistan</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
