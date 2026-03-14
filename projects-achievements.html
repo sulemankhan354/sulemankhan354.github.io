@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects & Achievements | Suleman Khan</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+      color: #172033;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .topbar-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.2px;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #475569;
+      font-size: 15px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: #2563eb;
+    }
+
+    .page-wrap {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 34px 28px 48px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section:first-child {
+      margin-top: 0;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      color: #0f172a;
+    }
+
+    .section-header p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #475569;
+      max-width: 960px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 26px;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+      padding: 26px;
+      height: 100%;
+    }
+
+    .project-card {
+      border-top: 6px solid #2563eb;
+    }
+
+    .project-card.secondary {
+      border-top-color: #0f766e;
+    }
+
+    .achievement-card {
+      border-top: 6px solid #d97706;
+    }
+
+    .leadership-card {
+      border-top: 6px solid #7c3aed;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #0f172a;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #e0e7ff;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .project-card.secondary .meta span {
+      background: #ccfbf1;
+      color: #0f766e;
+    }
+
+    .card p {
+      margin: 0 0 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
+    .detail-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .detail-list li {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .detail-list strong {
+      color: #0f172a;
+    }
+
+    .link-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      background: #1d4ed8;
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+    }
+
+    .btn.secondary {
+      background: #ffffff;
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      box-shadow: none;
+    }
+
+    .item-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .award-tile {
+      padding: 18px;
+      border-radius: 20px;
+      background: #fff7ed;
+      border: 1px solid rgba(217,119,6,0.14);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+      height: 100%;
+    }
+
+    .award-tile h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #0f172a;
+    }
+
+    .award-tile p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .item {
+      padding: 18px;
+      border-radius: 20px;
+      background: #f8fafc;
+      border: 1px solid rgba(148,163,184,0.16);
+    }
+
+    .achievement-card .item {
+      background: #fff7ed;
+      border-color: rgba(217, 119, 6, 0.14);
+    }
+
+    .leadership-card .item {
+      background: #faf5ff;
+      border-color: rgba(124, 58, 237, 0.12);
+    }
+
+    .item h4 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      color: #0f172a;
+    }
+
+    .item p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #475569;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .badge.gold {
+      background: #ffedd5;
+      color: #b45309;
+    }
+
+    .badge.violet {
+      background: #ede9fe;
+      color: #6d28d9;
+    }
+
+    .badge.blue {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .collab-bullets {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: #475569;
+    }
+
+    .collab-bullets li {
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+
+    .collab-bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .award-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .grid-2,
+      .grid-3,
+      .award-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inner,
+      .page-wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .detail-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Suleman Khan</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="pages/publications.html">Research</a>
+        <a href="projects-supervision.html">Teaching & Supervision</a>
+        <a href="projects-achievements.html" class="active">Projects & Achievements</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="section">
+      <div class="section-header">
+        <h2>Industry projects</h2>
+      </div>
+
+      <div class="grid-2">
+        <article class="card project-card">
+          <h3>MONAD — Monitoring and anomaly detection of data streams and decision processes in advanced Digital ATS</h3>
+          <div class="meta">
+            <span>2024–2027</span>
+            <span>Swedish Transport Administration</span>
+            <span>Cybersecurity for ATS</span>
+          </div>
+          <p>
+            MONAD is a research project focused on improving cybersecurity in Air Traffic Service systems by addressing vulnerabilities in critical communication technologies such as ADS-B and ADS-C. The project applies advanced artificial intelligence techniques and real-world datasets to detect and classify anomalies in air-ground communications.
+          </p>
+          <p>
+            The work supports proactive identification of security threats and strengthens the integrity, resilience, and trustworthiness of advanced digital ATS environments.
+          </p>
+          <ul class="detail-list">
+            <li><strong>Partners</strong><span>LFV, Automation Program II (Part C), and SEC-AIRSPACE (SESAR3)</span></li>
+          </ul>
+          <div class="link-row">
+            <a class="btn" href="https://liu.se/en/research/cybersecurity/cybersecurity-research" target="_blank">LiU project page</a>
+            <a class="btn secondary" href="https://www.lfv.se/sv/om-oss/innovation/monad" target="_blank">LFV project page</a>
+          </div>
+        </article>
+
+        <article class="card project-card secondary">
+          <h3>AiRMOUR — Sustainable air mobility and emergency medical drone operations</h3>
+          <div class="meta">
+            <span>EU-funded project</span>
+            <span>Urban Air Mobility</span>
+            <span>Finalised</span>
+          </div>
+          <p>
+            AiRMOUR is a European research and innovation project that explored safe, secure, quiet, and sustainable air mobility, with a particular focus on emergency medical services and real-life drone operations.
+          </p>
+          <p>
+            This project aligns with broader aviation digitalisation and future air mobility themes relevant to secure, resilient, and operationally acceptable next-generation airspace services.
+          </p>
+          <ul class="detail-list">
+            <li><strong>Scope</strong><span>Research and validation of future air mobility concepts and solutions</span></li>
+            <li><strong>Relevance</strong><span>Supports understanding of security, operations, and ecosystem needs in emerging aviation environments</span></li>
+            <li><strong>Funding</strong><span>European Union Horizon 2020 research and innovation programme</span></li>
+          </ul>
+          <div class="link-row">
+            <a class="btn" href="https://airmour.eu/" target="_blank">Visit AiRMOUR</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Achievements and Awards</h2>
+        
+      </div>
+
+      <div class="award-grid">
+        <article class="award-tile">
+          <h4>Best Paper Award — ICNS 2021</h4>
+          <p>Received the Best Paper Award at the ICNS Conference 2021, Linköping University, Sweden.</p>
+          <div class="badge-row">
+            <span class="badge gold">Research Award</span>
+            <span class="badge gold">ICNS 2021</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Outstanding Paper Award — ICNS 2020</h4>
+          <p>Received the Outstanding Paper Award at the ICNS Conference 2020, Linköping University, Sweden.</p>
+          <div class="badge-row">
+            <span class="badge gold">Research Award</span>
+            <span class="badge gold">ICNS 2020</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Gold Medal — Master’s Graduating Class of 2019</h4>
+          <p>Recipient of the Gold Medal of the Master’s graduating class of 2019 at Air University.</p>
+          <div class="badge-row">
+            <span class="badge gold">Academic Honour</span>
+            <span class="badge blue">Air University</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Lawson Award</h4>
+          <p>Received the Lawson Award at Linköping University in recognition of academic excellence and contribution within the university environment.</p>
+          <div class="badge-row">
+            <span class="badge gold">Academic Award</span>
+            <span class="badge blue">Linköping University</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Distinguished Teacher Award</h4>
+          <p>Received the Distinguished Teacher Award in recognition of teaching quality, mentoring support, and contribution to student learning.</p>
+          <div class="badge-row">
+            <span class="badge gold">Teaching Award</span>
+            <span class="badge gold">Mentoring</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Merit-Based Scholarship</h4>
+          <p>Awarded a merit-based scholarship during bachelor’s studies in recognition of academic performance.</p>
+          <div class="badge-row">
+            <span class="badge gold">Scholarship</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Bachelor’s Degree with Honours</h4>
+          <p>Completed the bachelor’s degree with honours and graduated among the top three students of the batch.</p>
+          <div class="badge-row">
+            <span class="badge gold">Honours</span>
+            <span class="badge gold">Top 3 Graduate</span>
+          </div>
+        </article>
+
+        <article class="award-tile">
+          <h4>Best IEEE Student Branch Chair Award — Region 8</h4>
+          <p>Received the Best IEEE Student Branch Chair Award in IEEE Region 8 for leadership, service, and contribution to the student and professional community.</p>
+          <div class="badge-row">
+            <span class="badge gold">IEEE Award</span>
+            <span class="badge gold">Leadership Award</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Leadership and collaboration</h2>
+        
+      </div>
+
+      <div class="grid-3">
+        <article class="card leadership-card">
+          <div class="item-list">
+            <div class="item">
+              <h4>IEEE Student Branch President — Region 8 Europe</h4>
+              <p>Served as IEEE Student Branch President at Linköping University, Sweden, within IEEE Region 8 Europe.</p>
+              <div class="badge-row">
+                <span class="badge violet">Leadership</span>
+                <span class="badge violet">IEEE</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card leadership-card">
+          <div class="item-list">
+            <div class="item">
+              <h4>Industry collaboration</h4>
+              <ul class="collab-bullets">
+                <li>Luftfartsverket (LFV), Sweden</li>
+                <li>German Aerospace Center (DLR), Germany</li>
+                <li>Airbus, Germany</li>
+              </ul>
+              <div class="badge-row">
+                <span class="badge blue">Industry</span>
+                <span class="badge blue">International</span>
+                <span class="badge blue">Collaboration</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card leadership-card">
+          <div class="item-list">
+            <div class="item">
+              <h4>Academic collaboration</h4>
+              <ul class="collab-bullets">
+                <li>Linköping University, Sweden</li>
+                <li>Universität der Bundeswehr München, Germany</li>
+                <li>Vrije Universiteit Brussel, Belgium</li>
+                <li>Swansea University, United Kingdom</li>
+                <li>University of Warwick, United Kingdom</li>
+              </ul>
+              <div class="badge-row">
+                <span class="badge violet">Academic</span>
+                <span class="badge violet">International</span>
+                <span class="badge violet">Collaboration</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
