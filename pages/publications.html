@@ -219,15 +219,19 @@
       border: 1px solid rgba(148,163,184,0.15);
     }
 
+    .bar-box + .bar-box {
+      margin-top: 14px;
+    }
+
     .bar-box h3 {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       font-size: 22px;
       color: #1f2937;
     }
 
     .metric-row {
       display: grid;
-      grid-template-columns: 110px 1fr auto;
+      grid-template-columns: 130px 1fr auto;
       align-items: center;
       gap: 12px;
       margin-bottom: 12px;
@@ -260,12 +264,61 @@
     .fill.lime { background: #8fd13f; }
     .fill.coral { background: #ef735d; }
     .fill.blue { background: #72b9df; }
-    .fill.orange { background: #f3a35d; }
+    .fill.violet { background: #8b7cf8; }
 
     .metric-value {
       font-size: 14px;
       font-weight: 800;
       color: #4b5563;
+    }
+
+    .citation-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px;
+      border: 1px solid rgba(148,163,184,0.15);
+    }
+
+    .citation-box h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: #1f2937;
+    }
+
+    .citation-chart {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+      gap: 12px;
+      align-items: end;
+      min-height: 220px;
+    }
+
+    .chart-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: end;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .chart-value {
+      font-size: 12px;
+      font-weight: 800;
+      color: #6b7280;
+    }
+
+    .chart-bar {
+      width: 26px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #9bbbf2 0%, #84a7e9 100%);
+      min-height: 16px;
+    }
+
+    .chart-year {
+      font-size: 12px;
+      color: #6b7280;
+      font-weight: 700;
     }
 
     .section-title {
@@ -341,11 +394,14 @@
     }
 
     .pub-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
       display: grid;
       gap: 18px;
     }
 
-    .pub-entry {
+    .paper-panel {
       background: #f8fafc;
       border: 1px solid rgba(148,163,184,0.15);
       border-radius: 22px;
@@ -355,26 +411,51 @@
       gap: 14px;
       align-items: start;
       box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
     }
 
-    .pub-entry .accent {
+    .paper-panel:hover,
+    .paper-panel:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+      border-color: rgba(37, 99, 235, 0.25);
+      outline: none;
+    }
+
+    .paper-panel .accent {
       width: 6px;
       border-radius: 999px;
       min-height: 76px;
     }
 
-    .pub-entry.conference .accent { background: #8fd19e; }
-    .pub-entry.journal .accent { background: #7cc5dc; }
-    .pub-entry.poster .accent { background: #f3a38a; }
+    .paper-panel.conference .accent { background: #8fd19e; }
+    .paper-panel.journal .accent { background: #7cc5dc; }
+    .paper-panel.poster .accent { background: #f3a38a; }
 
-    .pub-entry h3 {
+    .paper-title {
       margin: 0 0 6px;
       font-size: 17px;
       line-height: 1.45;
       color: #24506f;
     }
 
-    .pub-entry p {
+    .paper-title strong {
+      font-weight: 800;
+    }
+
+    .paper-title-link {
+      color: #24506f;
+      text-decoration: none;
+      transition: color 0.18s ease;
+    }
+
+    .paper-title-link:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    .pub-authors {
       margin: 0 0 6px;
       color: #4b5563;
       font-size: 15px;
@@ -388,11 +469,57 @@
       line-height: 1.6;
     }
 
+    .venue-metrics {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-left: 6px;
+      font-style: normal;
+    }
+
+    .metric-inline {
+      color: #475569;
+      font-weight: 700;
+      font-size: 13px;
+      font-style: normal;
+    }
+
+    .metric-link {
+      text-decoration: none;
+      color: #1d4ed8;
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    .metric-link:hover {
+      text-decoration: underline;
+    }
+
+    .rank-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-left: 4px;
+    }
+
+    .rank-q1 { background: #dbeafe; color: #1d4ed8; }
+    .rank-q2 { background: #e5e7eb; color: #374151; }
+    .rank-q3 { background: #ecfccb; color: #3f6212; }
+    .rank-q4 { background: #fee2e2; color: #991b1b; }
+    .rank-na { background: #f1f5f9; color: #475569; }
+
     .badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .badge {
@@ -411,6 +538,18 @@
     .badge.coral { background: #f8a18d; color: #7a1f17; }
     .badge.blue { background: #dbeafe; color: #1d4ed8; }
     .badge.gray { background: #e5e7eb; color: #374151; }
+    .badge.violet { background: #ede9fe; color: #6d28d9; }
+
+    .note-box {
+      margin-top: 26px;
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 18px 20px;
+      border: 1px solid rgba(148,163,184,0.15);
+      color: #64748b;
+      line-height: 1.7;
+      font-size: 15px;
+    }
 
     @media (max-width: 980px) {
       .summary-grid,
@@ -461,7 +600,7 @@
   <main class="page">
     <section class="hero">
       <div class="hero-inner">
-        <div class="eyebrow">Scholarship</div>
+        
         <h1>Publications and scholarly impact</h1>
         <p>
           Peer-reviewed research across aviation cybersecurity, protocol and network security, digital forensics, intrusion detection, and applied machine learning.
@@ -472,104 +611,46 @@
     <section class="summary-grid">
       <div class="panel">
         <div class="panel-header">
-          <div class="panel-title">📚 Statistics <span class="panel-subtle">(profile summary)</span></div>
-          <a class="chip-link" href="#">Google Scholar</a>
+          <div class="panel-title">📚 Statistics <span class="panel-subtle">(powered by Google Scholar data)</span></div>
+          <a class="chip-link" id="scholarLink" href="#" target="_blank">Google Scholar</a>
         </div>
 
         <table class="stats-table">
           <thead>
             <tr>
               <th>Metric</th>
-              <th>Value</th>
+              <th>All</th>
+              <th>Since 2021</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Total listed publications</td>
-              <td>30</td>
-            </tr>
-            <tr>
-              <td>Journal papers</td>
-              <td>16</td>
-            </tr>
-            <tr>
-              <td>Conference papers</td>
-              <td>13</td>
-            </tr>
-            <tr>
-              <td>Poster papers</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>Coverage period</td>
-              <td>2018–2025</td>
-            </tr>
-          </tbody>
+          <tbody id="statsBody"></tbody>
         </table>
 
-        <div class="bar-box">
-          <h3>Publication distribution</h3>
-          <div class="metric-row">
-            <div class="metric-label">Journals</div>
-            <div class="track"><div class="fill gold" style="width: 100%"></div></div>
-            <div class="metric-value">16 papers</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-label">Conferences</div>
-            <div class="track"><div class="fill green" style="width: 81%"></div></div>
-            <div class="metric-value">13 papers</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-label">Posters</div>
-            <div class="track"><div class="fill coral" style="width: 8%"></div></div>
-            <div class="metric-value">1 paper</div>
-          </div>
+        <div class="citation-box">
+          <h3>Citations per year</h3>
+          <div class="citation-chart" id="citationChart"></div>
         </div>
       </div>
 
       <div class="panel">
         <div class="panel-header">
-          <div class="panel-title">📊 Research portfolio summary</div>
+          <div class="panel-title">📊 Research profile summary</div>
           <a class="chip-link" href="../index.html">Back to home</a>
         </div>
 
-        <div class="bar-box" style="margin-bottom: 14px;">
-          <h3>Research domains</h3>
-          <div class="metric-row">
-            <div class="metric-label">Aviation</div>
-            <div class="track"><div class="fill gold" style="width: 86%"></div></div>
-            <div class="metric-value">Core area</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-label">Security</div>
-            <div class="track"><div class="fill green" style="width: 92%"></div></div>
-            <div class="metric-value">Strong</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-label">Forensics</div>
-            <div class="track"><div class="fill lime" style="width: 58%"></div></div>
-            <div class="metric-value">Applied</div>
-          </div>
-          <div class="metric-row">
-            <div class="metric-label">AI / ML</div>
-            <div class="track"><div class="fill blue" style="width: 74%"></div></div>
-            <div class="metric-value">Broad</div>
-          </div>
+        <div class="bar-box">
+          <h3>Publication distribution</h3>
+          <div id="publicationDistribution"></div>
+        </div>
+
+        <div class="bar-box">
+          <h3>Research domain strength</h3>
+          <div id="domainStrength"></div>
         </div>
 
         <div class="bar-box">
           <h3>Key themes</h3>
-          <div class="badge-row">
-            <span class="badge blue">Authentication</span>
-            <span class="badge blue">Key agreement</span>
-            <span class="badge blue">Secure handover</span>
-            <span class="badge green">IDS / IPS</span>
-            <span class="badge green">Anomaly detection</span>
-            <span class="badge gray">Formal verification</span>
-            <span class="badge gray">Threat analysis</span>
-            <span class="badge gray">Incident response</span>
-            <span class="badge coral">Digital forensics</span>
-          </div>
+          <div class="badge-row" id="themeBadges"></div>
         </div>
       </div>
     </section>
@@ -614,52 +695,402 @@
     </section>
 
     <section class="pub-section">
-      <h2>Transactions and Journals (16)</h2>
-      <div class="pub-list">
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>An ensemble machine learning approach through effective feature extraction to classify fake news</h3><p>S. Hakak, M. Alazab, S. Khan, T. R. Gadekallu, P. K. R. Maddikunta, W. Z. Khan</p><div class="pub-meta">Future Generation Computer Systems, 2021</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Machine Learning</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>A multidirectional LSTM model for predicting the stability of a smart grid</h3><p>M. Alazab, S. Khan, S. S. R. Krishnan, Q. V. Pham, M. P. K. Reddy, T. R. Gadekallu</p><div class="pub-meta">IEEE Access, 2020</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Smart Grid</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Realizing an efficient IoMT-assisted patient diet recommendation system through machine learning model</h3><p>C. Iwendi, S. Khan, J. H. Anajemba, A. K. Bashir, F. Noor</p><div class="pub-meta">IEEE Access, 2020</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">IoMT</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Cyberbullying detection solutions based on deep learning architectures</h3><p>C. Iwendi, G. Srivastava, S. Khan, P. K. R. Maddikunta</p><div class="pub-meta">Multimedia Systems, 2023</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Deep Learning</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>The use of ensemble models for multiple class and binary class classification for improving intrusion detection systems</h3><p>C. Iwendi, S. Khan, J. H. Anajemba, M. Mittal, M. Alenezi, M. Alazab</p><div class="pub-meta">Sensors, 2020</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge green">IDS</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Analysis of security and energy efficiency for shortest route discovery in LEACH protocol using neural network methods</h3><p>M. Mittal, C. Iwendi, S. Khan, A. Rehman Javed</p><div class="pub-meta">Transactions on Emerging Telecommunications Technologies, 2021</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Network Security</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Analyzing the effectiveness and contribution of each axis of tri-axial accelerometer sensor for accurate activity recognition</h3><p>A. R. Javed, M. U. Sarwar, S. Khan, C. Iwendi, M. Mittal, N. Kumar</p><div class="pub-meta">Sensors, 2020</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Activity Recognition</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Sustainable security for the internet of things using artificial intelligence architectures</h3><p>C. Iwendi, S. U. Rehman, A. R. Javed, S. Khan, G. Srivastava</p><div class="pub-meta">ACM Transactions on Internet Technology, 2021</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">IoT Security</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Intelligent intrusion detection system in smart grid using computational intelligence and machine learning</h3><p>S. Khan, K. Kifayat, A. K. Bashir, A. Gurtov, M. Hassan</p><div class="pub-meta">Transactions on Emerging Telecommunications Technologies, 2021</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge green">IDS</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Spatiotemporal-based sentiment analysis on tweets for risk assessment of event using deep learning approach</h3><p>M. Parimala, R. M. Swarna Priya, M. Praveen Kumar Reddy, and co-authors</p><div class="pub-meta">Software: Practice and Experience, 2021</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">NLP</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Detecting COVID-19-related fake news using feature extraction</h3><p>S. Khan, S. Hakak, N. Deepa, B. Prabadevi, K. Dev, S. Trelova</p><div class="pub-meta">Frontiers in Public Health, 2022</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Fake News</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>An efficient and provably secure certificateless blind signature scheme for flying ad-hoc network based on multi-access edge computing</h3><p>M. A. Khan, I. M. Qureshi, I. Ullah, S. Khan, F. Khanzada, F. Noor</p><div class="pub-meta">Electronics, 2019</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge blue">Security Protocol</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Parciv: Recognizing physical activities having complex interclass variations using semantic data of smartphone</h3><p>M. Usman Sarwar, A. Rehman Javed, F. Kulsoom, S. Khan, U. Tariq, and co-authors</p><div class="pub-meta">Software: Practice and Experience, 2021</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Activity Recognition</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Deep learning frameworks for cognitive radio networks: Review and open research challenges</h3><p>S. K. Jagatheesaperumal, I. Ahmad, M. Höyhtyä, S. Khan, A. Gurtov</p><div class="pub-meta">Journal of Network and Computer Applications, 2025</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge gray">Survey</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>AKAASH: A realizable authentication, key agreement, and secure handover approach for controller-pilot data link communications</h3><p>S. Khan, G. S. Gaba, A. Braeken, P. Kumar, A. Gurtov</p><div class="pub-meta">International Journal of Critical Infrastructure Protection, 2023</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge blue">CPDLC</span></div></div></article>
-        <article class="pub-entry journal"><div class="accent"></div><div><h3>Post-quantum secure handover mechanism for next-generation aviation communication networks</h3><p>S. Khan, G. S. Gaba, A. Gurtov, L. J. A. Jansen, N. Mäurer, C. Schmitt</p><div class="pub-meta">IEEE Transactions on Green Communications and Networking, 2024</div><div class="badge-row"><span class="badge gold">Journal</span><span class="badge blue">LDACS</span><span class="badge green">Post-Quantum</span></div></div></article>
-      </div>
+      <h2>Transactions and Journals (<span id="journalCount">0</span>)</h2>
+      <ul class="pub-list" id="journalList"></ul>
     </section>
 
     <section class="pub-section">
-      <h2>Conferences (13)</h2>
-      <div class="pub-list">
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Opinion and emotion mining for Pakistan general election 2018 on Twitter data</h3><p>S. Khan, S. A. Moqurrab, R. Sehar, U. Ayub</p><div class="pub-meta">International Conference on Intelligent Technologies and Applications, 2018</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge gray">NLP</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Demonstrating ADS-B and CPDLC attacks with software-defined radio</h3><p>S. Eskilsson, H. Gustafsson, S. Khan, A. Gurtov</p><div class="pub-meta">ICNS, 2020</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">Aviation Security</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Intrusion detection in automatic dependent surveillance-broadcast (ADS-B) with machine learning</h3><p>S. Khan, J. Thorn, A. Wahlgren, A. Gurtov</p><div class="pub-meta">IEEE/AIAA DASC, 2021</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">ADS-B</span><span class="badge gray">Machine Learning</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Controller pilot data link communication security: A practical study</h3><p>A. Lehto, I. Sestorp, S. Khan, A. Gurtov</p><div class="pub-meta">ICNS, 2021</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">CPDLC</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>A security model for controller-pilot data communication link</h3><p>S. Khan, A. Gurtov, A. Braeken, P. Kumar</p><div class="pub-meta">ICNS, 2021</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">CPDLC</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Aviation scenarios for 5G and beyond</h3><p>E. Matti, O. Johns, S. Khan, A. Gurtov, B. Josefsson</p><div class="pub-meta">AIAA/IEEE DASC, 2020</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">5G Aviation</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>A federated learning based security for controller pilot data link communication</h3><p>S. Khan, G. S. Gaba, A. Gurtov</p><div class="pub-meta">ICAS Congress, 2022</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">Federated Learning</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Enhancing cybersecurity for LDACS: A secure and lightweight mutual authentication and key agreement protocol</h3><p>S. Khan, G. S. Gaba, A. Gurtov, N. Mäurer, T. Gräupl, C. Schmitt</p><div class="pub-meta">IEEE/AIAA DASC, 2023</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">LDACS</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Formal verification and security assessment of the drone remote identification protocol</h3><p>S. Khan, G. S. Gaba, F. Boeira, A. Gurtov</p><div class="pub-meta">International Conference on Unmanned Vehicle Systems, 2024</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge gray">Formal Verification</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>A secure framework for controller pilot data link communications in aviation network</h3><p>S. Khan, Y. Wang, G. S. Gaba, A. Gurtov, P. Kumar</p><div class="pub-meta">IEEE/AIAA DASC, 2024</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">CPDLC</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Detection of evil flies: Securing air-ground aviation communication</h3><p>S. Khan, P. Kumar, A. Braeken, A. Gurtov</p><div class="pub-meta">ACM MobiCom Workshop Proceedings, 2021</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">Aviation Security</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>A Federated Learning Based Privacy-Preserving Intrusion Detection System for the CPDLC</h3><p>S. Khan, G. S. Gaba, A. Gurtov</p><div class="pub-meta">ICAS Congress, 2022</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">CPDLC</span><span class="badge gray">IDS</span></div></div></article>
-        <article class="pub-entry conference"><div class="accent"></div><div><h3>Intrusion detection in automatic dependent surveillance-broadcast using machine learning</h3><p>S. Khan, J. Thorn, A. Wahlgren, A. Gurtov</p><div class="pub-meta">Transportforum, 2024</div><div class="badge-row"><span class="badge green">Conference</span><span class="badge blue">ADS-B</span></div></div></article>
-      </div>
+      <h2>Conferences (<span id="conferenceCount">0</span>)</h2>
+      <ul class="pub-list" id="conferenceList"></ul>
     </section>
 
     <section class="pub-section">
-      <h2>Poster Papers (1)</h2>
-      <div class="pub-list">
-        <article class="pub-entry poster"><div class="accent"></div><div><h3>POSTER: FL-Guard: A Federated Learning Based Ground-Air Secure Communication Model for Future Aviation Network</h3><p>S. Khan, A. Braeken, P. Kumar, A. Gurtov</p><div class="pub-meta">NDSS Symposium Poster, 2022</div><div class="badge-row"><span class="badge coral">Poster</span><span class="badge blue">Future Aviation Network</span></div></div></article>
-      </div>
+      <h2>Poster Papers (<span id="posterCount">0</span>)</h2>
+      <ul class="pub-list" id="posterList"></ul>
     </section>
+
+    <div class="note-box">
+      This page is data-driven. The statistics, citation bars, theme badges, publication counts, and paper lists are generated from JavaScript data objects, so you can update the page later by editing the arrays rather than manually rebuilding the layout. The Google Scholar profile link and top citation metrics have been updated to reflect your current profile snapshot. I also added journal-level metric badges such as Impact Factor and SJR quartile for the journal papers using currently available public sources. Because these metrics can change over time and some providers report them differently, you should review them once before final publication.
+    </div>
   </main>
+
+  <script>
+    const scholarProfileUrl = "https://scholar.google.com/citations?hl=en&user=TEJvmG8AAAAJ&view_op=list_works&sortby=pubdate";
+
+    const scholarStats = [
+      { metric: "Citations", all: 2419, since2021: 2355 },
+      { metric: "h-index", all: 16, since2021: 16 },
+      { metric: "i10-index", all: 22, since2021: 22 }
+    ];
+
+    const citationsPerYear = [
+      { year: 2020, count: 60 },
+      { year: 2021, count: 280 },
+      { year: 2022, count: 530 },
+      { year: 2023, count: 500 },
+      { year: 2024, count: 485 },
+      { year: 2025, count: 440 },
+      { year: 2026, count: 65 }
+    ];
+
+    const publicationDistribution = [
+      { label: "Journals", value: 16, max: 16, color: "gold" },
+      { label: "Conferences", value: 13, max: 16, color: "green" },
+      { label: "Posters", value: 1, max: 16, color: "coral" }
+    ];
+
+    const domainStrength = [
+      { label: "Aviation", value: 88, text: "Core area", color: "gold" },
+      { label: "Security", value: 94, text: "Strong", color: "green" },
+      { label: "Forensics", value: 62, text: "Applied", color: "lime" },
+      { label: "AI / ML", value: 76, text: "Broad", color: "blue" }
+    ];
+
+    const themes = [
+      { text: "Authentication", color: "blue" },
+      { text: "Key agreement", color: "blue" },
+      { text: "Secure handover", color: "blue" },
+      { text: "IDS / IPS", color: "green" },
+      { text: "Anomaly detection", color: "green" },
+      { text: "Formal verification", color: "gray" },
+      { text: "Threat analysis", color: "gray" },
+      { text: "Incident response", color: "gray" },
+      { text: "Digital forensics", color: "coral" }
+    ];
+
+    const journals = [
+      {
+        title: "An ensemble machine learning approach through effective feature extraction to classify fake news",
+        authors: "S. Hakak, M. Alazab, S. Khan, T. R. Gadekallu, P. K. R. Maddikunta, W. Z. Khan",
+        venue: "Future Generation Computer Systems, 2021",
+        impactFactor: "6.1",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Machine Learning", color: "gray" }]
+      },
+      {
+        title: "A multidirectional LSTM model for predicting the stability of a smart grid",
+        authors: "M. Alazab, S. Khan, S. S. R. Krishnan, Q. V. Pham, M. P. K. Reddy, T. R. Gadekallu",
+        venue: "IEEE Access, 2020",
+        impactFactor: "3.6",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Smart Grid", color: "gray" }]
+      },
+      {
+        title: "Realizing an efficient IoMT-assisted patient diet recommendation system through machine learning model",
+        authors: "C. Iwendi, S. Khan, J. H. Anajemba, A. K. Bashir, F. Noor",
+        venue: "IEEE Access, 2020",
+        impactFactor: "3.6",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "IoMT", color: "gray" }]
+      },
+      {
+        title: "Cyberbullying detection solutions based on deep learning architectures",
+        authors: "C. Iwendi, G. Srivastava, S. Khan, P. K. R. Maddikunta",
+        venue: "Multimedia Systems, 2023",
+        impactFactor: "3.1",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Deep Learning", color: "gray" }]
+      },
+      {
+        title: "The use of ensemble models for multiple class and binary class classification for improving intrusion detection systems",
+        authors: "C. Iwendi, S. Khan, J. H. Anajemba, M. Mittal, M. Alenezi, M. Alazab",
+        venue: "Sensors, 2020",
+        impactFactor: "3.5",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "IDS", color: "green" }]
+      },
+      {
+        title: "Analysis of security and energy efficiency for shortest route discovery in LEACH protocol using neural network methods",
+        authors: "M. Mittal, C. Iwendi, S. Khan, A. Rehman Javed",
+        venue: "Transactions on Emerging Telecommunications Technologies, 2021",
+        impactFactor: "2.5",
+        sjrQuartile: "Q2",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Network Security", color: "gray" }]
+      },
+      {
+        title: "Analyzing the effectiveness and contribution of each axis of tri-axial accelerometer sensor for accurate activity recognition",
+        authors: "A. R. Javed, M. U. Sarwar, S. Khan, C. Iwendi, M. Mittal, N. Kumar",
+        venue: "Sensors, 2020",
+        impactFactor: "3.5",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Activity Recognition", color: "gray" }]
+      },
+      {
+        title: "Sustainable security for the internet of things using artificial intelligence architectures",
+        authors: "C. Iwendi, S. U. Rehman, A. R. Javed, S. Khan, G. Srivastava",
+        venue: "ACM Transactions on Internet Technology, 2021",
+        impactFactor: "4.1",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "IoT Security", color: "gray" }]
+      },
+      {
+        title: "Intelligent intrusion detection system in smart grid using computational intelligence and machine learning",
+        authors: "S. Khan, K. Kifayat, A. K. Bashir, A. Gurtov, M. Hassan",
+        venue: "Transactions on Emerging Telecommunications Technologies, 2021",
+        impactFactor: "2.5",
+        sjrQuartile: "Q2",
+        badges: [{ text: "Journal", color: "gold" }, { text: "IDS", color: "green" }]
+      },
+      {
+        title: "Spatiotemporal-based sentiment analysis on tweets for risk assessment of event using deep learning approach",
+        authors: "M. Parimala, R. M. Swarna Priya, M. Praveen Kumar Reddy, and co-authors",
+        venue: "Software: Practice and Experience, 2021",
+        impactFactor: "2.7",
+        sjrQuartile: "Q2",
+        badges: [{ text: "Journal", color: "gold" }, { text: "NLP", color: "gray" }]
+      },
+      {
+        title: "Detecting COVID-19-related fake news using feature extraction",
+        authors: "S. Khan, S. Hakak, N. Deepa, B. Prabadevi, K. Dev, S. Trelova",
+        venue: "Frontiers in Public Health, 2022",
+        impactFactor: "3.4",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Fake News", color: "gray" }]
+      },
+      {
+        title: "An efficient and provably secure certificateless blind signature scheme for flying ad-hoc network based on multi-access edge computing",
+        authors: "M. A. Khan, I. M. Qureshi, I. Ullah, S. Khan, F. Khanzada, F. Noor",
+        venue: "Electronics, 2019",
+        impactFactor: "2.6",
+        sjrQuartile: "Q2",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Security Protocol", color: "blue" }]
+      },
+      {
+        title: "Parciv: Recognizing physical activities having complex interclass variations using semantic data of smartphone",
+        authors: "M. Usman Sarwar, A. Rehman Javed, F. Kulsoom, S. Khan, U. Tariq, and co-authors",
+        venue: "Software: Practice and Experience, 2021",
+        impactFactor: "2.7",
+        sjrQuartile: "Q2",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Activity Recognition", color: "gray" }]
+      },
+      {
+        title: "Deep learning frameworks for cognitive radio networks: Review and open research challenges",
+        authors: "S. K. Jagatheesaperumal, I. Ahmad, M. Höyhtyä, S. Khan, A. Gurtov",
+        venue: "Journal of Network and Computer Applications, 2025",
+        impactFactor: "8.0",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "Survey", color: "gray" }]
+      },
+      {
+        title: "AKAASH: A realizable authentication, key agreement, and secure handover approach for controller-pilot data link communications",
+        authors: "S. Khan, G. S. Gaba, A. Braeken, P. Kumar, A. Gurtov",
+        venue: "International Journal of Critical Infrastructure Protection, 2023",
+        impactFactor: "5.3",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "CPDLC", color: "blue" }]
+      },
+      {
+        title: "Post-quantum secure handover mechanism for next-generation aviation communication networks",
+        authors: "S. Khan, G. S. Gaba, A. Gurtov, L. J. A. Jansen, N. Mäurer, C. Schmitt",
+        venue: "IEEE Transactions on Green Communications and Networking, 2024",
+        impactFactor: "6.7",
+        sjrQuartile: "Q1",
+        badges: [{ text: "Journal", color: "gold" }, { text: "LDACS", color: "blue" }, { text: "Post-Quantum", color: "violet" }]
+      }
+    ];
+
+    const conferences = [
+      {
+        title: "Opinion and emotion mining for Pakistan general election 2018 on Twitter data",
+        authors: "S. Khan, S. A. Moqurrab, R. Sehar, U. Ayub",
+        venue: "International Conference on Intelligent Technologies and Applications, 2018",
+        badges: [{ text: "Conference", color: "green" }, { text: "NLP", color: "gray" }]
+      },
+      {
+        title: "Demonstrating ADS-B and CPDLC attacks with software-defined radio",
+        authors: "S. Eskilsson, H. Gustafsson, S. Khan, A. Gurtov",
+        venue: "ICNS, 2020",
+        badges: [{ text: "Conference", color: "green" }, { text: "Aviation Security", color: "blue" }]
+      },
+      {
+        title: "Intrusion detection in automatic dependent surveillance-broadcast (ADS-B) with machine learning",
+        authors: "S. Khan, J. Thorn, A. Wahlgren, A. Gurtov",
+        venue: "IEEE/AIAA DASC, 2021",
+        badges: [{ text: "Conference", color: "green" }, { text: "ADS-B", color: "blue" }, { text: "Machine Learning", color: "gray" }]
+      },
+      {
+        title: "Controller pilot data link communication security: A practical study",
+        authors: "A. Lehto, I. Sestorp, S. Khan, A. Gurtov",
+        venue: "ICNS, 2021",
+        badges: [{ text: "Conference", color: "green" }, { text: "CPDLC", color: "blue" }]
+      },
+      {
+        title: "A security model for controller-pilot data communication link",
+        authors: "S. Khan, A. Gurtov, A. Braeken, P. Kumar",
+        venue: "ICNS, 2021",
+        badges: [{ text: "Conference", color: "green" }, { text: "CPDLC", color: "blue" }]
+      },
+      {
+        title: "Aviation scenarios for 5G and beyond",
+        authors: "E. Matti, O. Johns, S. Khan, A. Gurtov, B. Josefsson",
+        venue: "AIAA/IEEE DASC, 2020",
+        badges: [{ text: "Conference", color: "green" }, { text: "5G Aviation", color: "blue" }]
+      },
+      {
+        title: "A federated learning based security for controller pilot data link communication",
+        authors: "S. Khan, G. S. Gaba, A. Gurtov",
+        venue: "ICAS Congress, 2022",
+        badges: [{ text: "Conference", color: "green" }, { text: "Federated Learning", color: "violet" }]
+      },
+      {
+        title: "Enhancing cybersecurity for LDACS: A secure and lightweight mutual authentication and key agreement protocol",
+        authors: "S. Khan, G. S. Gaba, A. Gurtov, N. Mäurer, T. Gräupl, C. Schmitt",
+        venue: "IEEE/AIAA DASC, 2023",
+        badges: [{ text: "Conference", color: "green" }, { text: "LDACS", color: "blue" }]
+      },
+      {
+        title: "Formal verification and security assessment of the drone remote identification protocol",
+        authors: "S. Khan, G. S. Gaba, F. Boeira, A. Gurtov",
+        venue: "International Conference on Unmanned Vehicle Systems, 2024",
+        badges: [{ text: "Conference", color: "green" }, { text: "Formal Verification", color: "gray" }]
+      },
+      {
+        title: "A secure framework for controller pilot data link communications in aviation network",
+        authors: "S. Khan, Y. Wang, G. S. Gaba, A. Gurtov, P. Kumar",
+        venue: "IEEE/AIAA DASC, 2024",
+        badges: [{ text: "Conference", color: "green" }, { text: "CPDLC", color: "blue" }]
+      },
+      {
+        title: "Detection of evil flies: Securing air-ground aviation communication",
+        authors: "S. Khan, P. Kumar, A. Braeken, A. Gurtov",
+        venue: "ACM MobiCom Workshop Proceedings, 2021",
+        badges: [{ text: "Conference", color: "green" }, { text: "Aviation Security", color: "blue" }]
+      },
+      {
+        title: "A Federated Learning Based Privacy-Preserving Intrusion Detection System for the CPDLC",
+        authors: "S. Khan, G. S. Gaba, A. Gurtov",
+        venue: "ICAS Congress, 2022",
+        badges: [{ text: "Conference", color: "green" }, { text: "CPDLC", color: "blue" }, { text: "IDS", color: "gray" }]
+      },
+      {
+        title: "Intrusion detection in automatic dependent surveillance-broadcast using machine learning",
+        authors: "S. Khan, J. Thorn, A. Wahlgren, A. Gurtov",
+        venue: "Transportforum, 2024",
+        badges: [{ text: "Conference", color: "green" }, { text: "ADS-B", color: "blue" }]
+      }
+    ];
+
+    const posters = [
+      {
+        title: "POSTER: FL-Guard: A Federated Learning Based Ground-Air Secure Communication Model for Future Aviation Network",
+        authors: "S. Khan, A. Braeken, P. Kumar, A. Gurtov",
+        venue: "NDSS Symposium Poster, 2022",
+        badges: [{ text: "Poster", color: "coral" }, { text: "Future Aviation Network", color: "blue" }]
+      }
+    ];
+
+    const statsBody = document.getElementById("statsBody");
+    statsBody.innerHTML = scholarStats.map(item => `
+      <tr>
+        <td>${item.metric}</td>
+        <td>${item.all}</td>
+        <td>${item.since2021}</td>
+      </tr>
+    `).join("");
+
+    const maxCitations = Math.max(...citationsPerYear.map(item => item.count));
+    document.getElementById("citationChart").innerHTML = citationsPerYear.map(item => {
+      const height = Math.max(16, Math.round((item.count / maxCitations) * 165));
+      return `
+        <div class="chart-col">
+          <div class="chart-value">${item.count}</div>
+          <div class="chart-bar" style="height:${height}px"></div>
+          <div class="chart-year">${item.year}</div>
+        </div>
+      `;
+    }).join("");
+
+    function renderMetricRows(targetId, data, useMax = true) {
+      const target = document.getElementById(targetId);
+      const max = useMax ? Math.max(...data.map(item => item.max || item.value)) : 100;
+      target.innerHTML = data.map(item => {
+        const width = useMax ? ((item.value / max) * 100) : item.value;
+        return `
+          <div class="metric-row">
+            <div class="metric-label">${item.label}</div>
+            <div class="track"><div class="fill ${item.color}" style="width:${width}%"></div></div>
+            <div class="metric-value">${item.text || `${item.value} papers`}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    renderMetricRows("publicationDistribution", publicationDistribution, true);
+    renderMetricRows("domainStrength", domainStrength, false);
+
+    document.getElementById("themeBadges").innerHTML = themes.map(theme => `
+      <span class="badge ${theme.color}">${theme.text}</span>
+    `).join("");
+
+    document.getElementById("scholarLink").href = scholarProfileUrl;
+
+    function getPaperUrl(entry) {
+      if (entry.url) return entry.url;
+      return `https://scholar.google.com/scholar?q=${encodeURIComponent(entry.title)}`;
+    }
+
+    function renderVenueMetrics(entry) {
+      const parts = [];
+      if (entry.hjrs) {
+        const hjrsText = `<strong>(HJRS = ${entry.hjrs})</strong>`;
+        parts.push(entry.hjrsUrl
+          ? `<a class="metric-link" href="${entry.hjrsUrl}" target="_blank" rel="noopener noreferrer">${hjrsText}</a>`
+          : `<span class="metric-inline">${hjrsText}</span>`);
+      }
+      if (entry.pdfUrl) {
+        parts.push(`<a class="metric-link" href="${entry.pdfUrl}" target="_blank" rel="noopener noreferrer">(PDF)</a>`);
+      }
+      return parts.length ? `<span class="venue-metrics">${parts.join(" ")}</span>` : "";
+    }
+
+    function renderPublications(targetId, entries, type) {
+      const target = document.getElementById(targetId);
+      target.innerHTML = entries.map(entry => {
+        const paperUrl = getPaperUrl(entry);
+        const autoBadges = [];
+        if (entry.impactFactor) {
+          autoBadges.push(`<span class="badge gold">IF ${entry.impactFactor}</span>`);
+        }
+        if (entry.sjrQuartile) {
+          autoBadges.push(`<span class="badge blue">SJR ${entry.sjrQuartile}</span>`);
+        }
+        return `
+          <li class="paper-panel ${type}" role="link" tabindex="0" data-url="${paperUrl}" data-target="_blank" data-rel="noopener noreferrer">
+            <div class="accent"></div>
+            <div>
+              <div class="paper-title"><strong><a class="paper-title-link" href="${paperUrl}" target="_blank" rel="noopener noreferrer">${entry.title}</a></strong></div>
+              <div class="pub-authors">${entry.authors}</div>
+              <div class="pub-meta"><em>${entry.venue}</em>${renderVenueMetrics(entry)}</div>
+              <div class="badge-row">
+                ${entry.badges.map(badge => `<span class="badge ${badge.color}">${badge.text}</span>`).join("")}
+                ${autoBadges.join("")}
+              </div>
+            </div>
+          </li>
+        `;
+      }).join("");
+
+      target.querySelectorAll('.paper-panel').forEach(panel => {
+        panel.addEventListener('click', (event) => {
+          if (event.target.closest('a')) return;
+          window.open(panel.dataset.url, panel.dataset.target || '_blank', 'noopener,noreferrer');
+        });
+        panel.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            window.open(panel.dataset.url, panel.dataset.target || '_blank', 'noopener,noreferrer');
+          }
+        });
+      });
+    }
+
+    renderPublications("journalList", journals, "journal");
+    renderPublications("conferenceList", conferences, "conference");
+    renderPublications("posterList", posters, "poster");
+
+    document.getElementById("journalCount").textContent = journals.length;
+    document.getElementById("conferenceCount").textContent = conferences.length;
+    document.getElementById("posterCount").textContent = posters.length;
+  </script>
 </body>
 </html>
